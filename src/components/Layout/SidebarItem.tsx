@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import useSignout from '@hooks/useSignout';
 import { flexBox } from '@styles/mixins';
 import Link from 'next/link';

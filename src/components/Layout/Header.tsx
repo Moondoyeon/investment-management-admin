@@ -23,8 +23,10 @@ export default Header;
 
 const Container = styled.div`
   ${flexBox('row', 'space-between')};
+  grid-area: header;
   height: 100px;
-  box-shadow: 0 1px 3px ${({ theme }) => theme.GRAY_DARK};
+  box-shadow: 0 1px 8px ${({ theme }) => theme.GRAY_DARK};
+  /* z-index: 3; */
   padding: 0 20px;
   background-color: white;
 `;

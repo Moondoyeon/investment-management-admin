@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from "styled-components";
+import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 
 interface Props {
   children: React.ReactNode;
@@ -10,6 +10,7 @@ function TableHeadColumn({ children, style }: Props) {
 export default TableHeadColumn;
 
 const Column = styled.th<{ customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>> }>`
+  position: relative;
   padding: 10px;
   font-size: 12px;
   font-weight: 600;

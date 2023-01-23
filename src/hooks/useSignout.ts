@@ -7,7 +7,7 @@ function useSignout() {
 
   const handleSignout = () => {
     CookieToken.remove();
-    console.log(CookieToken.get());
+    // console.log(CookieToken.get());
     router.replace('/signin');
   };
 

@@ -32,7 +32,7 @@ function useSignin() {
     onSuccess: (data) => {
       handleError(data);
       CookieToken.set(data.accessToken);
-      console.log(CookieToken.get());
+      // console.log(CookieToken.get());
       router.replace('/');
     },
     onError: (error: Error) => {

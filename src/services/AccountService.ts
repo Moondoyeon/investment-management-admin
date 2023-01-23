@@ -1,6 +1,6 @@
-import getQueryString from "@utils/getQueryString";
-import axiosInstance from "src/api/instance";
-import { IAccount } from "src/types/account";
+import getQueryString from '@utils/getQueryString';
+import axiosInstance from 'src/api/instance';
+import { IAccount } from 'src/types/account';
 
 const AccountsService = {
   accountsQueryOptions: {
@@ -14,16 +14,16 @@ const AccountsService = {
 
   accountQueryConverter(key: string) {
     switch (key) {
-      case "page":
-        return "_page";
-      case "limit":
-        return "_limit";
-      case "brokerId":
-        return "broker_id";
-      case "isActive":
-        return "is_active";
-      case "search":
-        return "q";
+      case 'page':
+        return '_page';
+      case 'limit':
+        return '_limit';
+      case 'brokerId':
+        return 'broker_id';
+      case 'isActive':
+        return 'is_active';
+      case 'search':
+        return 'q';
       default:
         return key;
     }
@@ -33,7 +33,18 @@ const AccountsService = {
     const { data, headers } = await axiosInstance({ bearer: true }).get<IAccount[]>(
       `/accounts?${getQueryString(params, this.accountQueryConverter)}`
     );
-    return { data, totalLength: Number(headers?.["x-total-count"] ?? 0) };
+    return { data, totalLength: Number(headers?.['x-total-count'] ?? 0) };
+  },
+
+  async getAccountByUserId(userId: number) {
+    const { data, headers } = await axiosInstance({ bearer: true }).get<IAccount[]>(`accounts?user_id=${userId}`);
+
+    return { data, totalCount: Number(headers?.['x-total-count'] ?? 0) };
+  }, // 유저 계좌 총수
+
+  async patchAccountName(id: string, data: { name: string }) {
+    const res = await axiosInstance({ bearer: true }).patch<IAccount>(`/accounts/${id}`, data);
+    return res.data;
   },
 };
 export default AccountsService;

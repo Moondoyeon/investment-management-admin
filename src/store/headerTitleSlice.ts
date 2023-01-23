@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export type HeaderTitleState = string;
 
 const initialState: HeaderTitleState = '';
+
 export const headerTitleSlice = createSlice({
   name: 'headerTitle',
   initialState,

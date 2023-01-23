@@ -15,13 +15,11 @@ function Layout({ children }: Props) {
   return (
     <Container>
       <Sidebar />
-      <div>
-        <Header />
-        <Content>
-          <SChildren>{children}</SChildren>
-          <Footer />
-        </Content>
-      </div>
+      <Header />
+      <Content>
+        <SChildren>{children}</SChildren>
+        <Footer />
+      </Content>
     </Container>
   );
 }
@@ -31,11 +29,15 @@ const Container = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  grid-template-areas:
+    'sider header'
+    'sider content';
 `;
 const Content = styled.div`
+  grid-area: content;
   background-color: ${({ theme }) => theme.GRAY_BG};
 `;
 const SChildren = styled.div`
-  min-height: calc(90vh - 80px);
+  min-height: calc(90vh - 110px);
   padding: 20px;
 `;

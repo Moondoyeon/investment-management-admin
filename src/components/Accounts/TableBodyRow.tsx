@@ -1,8 +1,8 @@
-import TableBodyColumn from "@components/UI/TableBodyColumn";
-import useParseAccountData from "@hooks/useParseAccountData";
-import Link from "next/link";
-import React from "react";
-import { IAccount } from "src/types/account";
+import TableBodyColumn from '@components/UI/TableBodyColumn';
+import useParseAccountData from '@hooks/useParseAccountData';
+import Link from 'next/link';
+import React from 'react';
+import { IAccount } from 'src/types/account';
 
 interface Props {
   account: IAccount;
@@ -12,22 +12,22 @@ function TableBodyRow({ account }: Props) {
   const parsedAccount = useParseAccountData({ account });
   return (
     <>
-      {parsedAccount.map((item) => {
-        if (item.href)
+      {parsedAccount.map(({ key, content, href, type }) => {
+        if (href)
           return (
-            <TableBodyColumn key={item.key} type="textBlue">
-              <Link href={item.href}>{item.content}</Link>
+            <TableBodyColumn key={key} type="textBlue">
+              <Link href={href}>{content}</Link>
             </TableBodyColumn>
           );
 
-        if (item.type === "textRight")
+        if (type === 'textRight')
           return (
-            <TableBodyColumn key={item.key} type="textRight">
-              {item.content}
+            <TableBodyColumn key={key} type="textRight">
+              {content}
             </TableBodyColumn>
           );
 
-        return <TableBodyColumn key={item.key}>{item.content}</TableBodyColumn>;
+        return <TableBodyColumn key={key}>{content}</TableBodyColumn>;
       })}
     </>
   );

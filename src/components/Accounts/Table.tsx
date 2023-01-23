@@ -1,13 +1,12 @@
-import { IAccount } from "src/types/account";
-import styled from "styled-components";
-import TableBodyRow from "./TableBodyRow";
-import TableHeadRow from "./TableHeadRow";
+import { IAccount } from 'src/types/account';
+import styled from 'styled-components';
+import TableBodyRow from './TableBodyRow';
+import TableHeadRow from './TableHeadRow';
 
 interface Props {
   accounts: IAccount[] | [];
 }
 function Table({ accounts }: Props) {
-  console.log(accounts);
   return (
     <STable>
       <THead>
